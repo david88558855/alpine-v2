@@ -28,15 +28,15 @@ RUN apk add --no-cache \
     \
     rm -rf /var/cache/apk/*
 
-# 安装 sing-box
-RUN bash <(wget -qO- -o- https://github.com/233boy/sing-box/raw/main/install.sh)
-
 # TZ 让容器内程序（如 date、cron 等）直接读取时区
 ENV container=docker \
     TZ=Asia/Shanghai
 
 # 设置工作目录 /root
 WORKDIR /root
+
+# 安装 sing-box
+RUN bash <(wget -qO- -o- https://github.com/233boy/sing-box/raw/main/install.sh)
 
 # 容器启动时运行的命令
 ENTRYPOINT ["/sbin/init"]
