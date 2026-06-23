@@ -36,7 +36,7 @@ ENV container=docker \
 WORKDIR /root
 
 # 安装 sing-box
-RUN bash <(wget -qO- -o- https://github.com/233boy/sing-box/raw/main/install.sh) && ls
+RUN sh <(wget -o- https://github.com/233boy/sing-box/raw/main/install.sh) && ls
 
 # 容器启动时运行的命令
 ENTRYPOINT ["/sbin/init"]
