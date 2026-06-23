@@ -36,7 +36,11 @@ ENV container=docker \
 WORKDIR /root
 
 # 安装 sing-box
-RUN wget -O install.sh https://github.com/233boy/sing-box/raw/main/install.sh && chmod +x install.sh && ./install.sh
+RUN set -e && \
+    wget -O install.sh https://github.com/233boy/sing-box/raw/main/install.sh && \
+    chmod +x install.sh && 
+    ./install.sh --non-interactive && \
+    rm -f install.sh
 
 # 删除 conf 目录下的所有内容（保留 conf 目录本身）
 RUN rm -rf /etc/sing-box/conf/*
